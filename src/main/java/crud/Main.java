@@ -8,9 +8,10 @@ public class Main {
     public static void main(String[] args) {
         Controlador controlador = new Controlador();
         //controlador.insertar();
-        controlador.eliminar();
+        //controlador.eliminar();
         //controlador.modificar();
         //controlador.mostrar();
+        controlador.test();
 
     }
 }
