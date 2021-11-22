@@ -21,6 +21,7 @@ public class Main {
             System.out.println(sqle.getMessage());
         }
         VentanaPrincipal v=new VentanaPrincipal(conexion);
+        v.setTitle("Centro Deportivo Vladimir Tachenko");
         v.setVisible(true);
 //        GUI gui = new GUI();
 //        Controlador controlador = new Controlador();
