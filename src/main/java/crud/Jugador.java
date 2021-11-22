@@ -12,7 +12,7 @@ public class Jugador {
     private String nombre;
 
     @ManyToOne()
-    @JoinColumn(name = "equipos_id")
+    @JoinColumn(name = "equipos_nombre")
     private Equipo equipos;
 
     public String getNombre() {
