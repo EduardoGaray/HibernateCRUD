@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class VentanaPartidos extends JFrame {
     VentanaNuevoPartido ventanaNuevoPartido;
@@ -66,7 +67,7 @@ public class VentanaPartidos extends JFrame {
 
         JButton btnXML=new JButton("Exportar a XML");
         add(btnXML);
-        btnXML.addActionListener(new VentanaPartidos.CallBackNuevo());
+        btnXML.addActionListener(new VentanaPartidos.CallBackXML());
 
         try {
             //Creamos un statemen y realizamos la consulta
@@ -114,6 +115,23 @@ public class VentanaPartidos extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {ventanaNuevoPartido.setVisible(true);
         }
+    }
+
+    private class CallBackXML implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            XML xml = new XML("root","","localhost:3306/equipos");
+            try {
+                xml.getTableData("partidos");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            xml.xmltoFile(xml.file,"xml");
+            showMessageDialog(null,"Archivo XML exportado");
+        }
+
     }
 
     private class CallBackCSV implements ActionListener{
